@@ -12,7 +12,7 @@ def list():
         for row in DictReader(f):
             print(row)
             data.append(row)
-    return render_template("index.html", title='SMS List', data=data, fields=webhook_app.config['fields'])
+    return render_template("index.html", title='SMS List', data=data, fields=webhook_app.config['FIELDS'])
 
 
 @webhook_app.route('/post/', methods=['POST'])
@@ -21,7 +21,7 @@ def post():
     sms = request.values
     print(sms)
     with open(webhook_app.config['CSV_PATH'], 'a', newline='') as f:
-        writer = DictWriter(f, fieldnames=webhook_app.config['fields'])
+        writer = DictWriter(f, fieldnames=webhook_app.config['FIELDS'])
         writer.writerow({'from': sms['From'], 'body': sms['Body']})
     print("written")
     return str(MessagingResponse())  # send empty response, meaning "do nothing"
