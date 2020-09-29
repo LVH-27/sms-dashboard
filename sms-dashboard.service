@@ -3,7 +3,7 @@ Description=SMS Dashboard - Twilio Webhook
 After=network.target
 
 [Service]
-WorkingDirectory=/opt/sms-dashboard/app/sms-dashboard
+WorkingDirectory=/opt/sms-dashboard/app
 EnvironmentFile=/opt/sms-dashboard/gunicorn.env
 ExecStart=/home/ubuntu/sms-dashboard/bin/gunicorn -b localhost:5000 app:webhook_app
 Restart=always
