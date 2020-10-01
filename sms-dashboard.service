@@ -4,7 +4,6 @@ After=network.target
 
 [Service]
 WorkingDirectory=/opt/sms-dashboard
-EnvironmentFile=/opt/sms-dashboard/gunicorn.env
 ExecStart=/home/ubuntu/sms-dashboard/bin/gunicorn -b localhost:5000 app:webhook_app
 Restart=always
 
